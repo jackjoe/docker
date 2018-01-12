@@ -18,7 +18,7 @@ RUN apk add --update --no-cache \
 RUN apk add --no-cache --virtual .build-deps build-base autoconf
 
 ENV PHP_EXTENSIONS "bcmath bz2 calendar exif gmp iconv intl json mcrypt pcntl pdo pdo_mysql readline soap xml xmlrpc xsl zip"
-RUN apk --update --no-cache add \
+RUN apk add --update --no-cache \
       zlib-dev \
       libbz2 \
       libxml2-dev \
@@ -45,6 +45,8 @@ RUN apk --update --no-cache add \
       pcre-dev \
       sqlite-dev \
       cyrus-sasl-dev
+
+RUN apk --update
 
 RUN docker-php-ext-configure $PHP_EXTENSIONS
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
