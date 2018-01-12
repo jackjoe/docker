@@ -3,6 +3,8 @@ FROM php:7.1-alpine
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>" \
   php="7.1"
 
+RUN apk update
+
 RUN apk add --update --no-cache \
       bash \
       make \
@@ -46,7 +48,7 @@ RUN apk add --update --no-cache \
       sqlite-dev \
       cyrus-sasl-dev
 
-RUN apk --update
+RUN apk update
 
 RUN docker-php-ext-configure $PHP_EXTENSIONS
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
