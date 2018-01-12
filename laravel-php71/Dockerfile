@@ -47,12 +47,12 @@ RUN apk --update --no-cache add \
       sqlite-dev \
       cyrus-sasl-dev
 
-RUN docker-php-ext-configure $PHP_EXTENSIONS \
-      && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-      && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-      && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) $PHP_EXTENSIONS \
-      && docker-php-ext-enable $PHP_EXTENSIONS \
-      && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd imap \
+RUN docker-php-ext-configure $PHP_EXTENSIONS
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) $PHP_EXTENSIONS
+RUN docker-php-ext-enable $PHP_EXTENSIONS
+RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd imap
 
 RUN pecl install imagick \
       && docker-php-ext-enable imagick
