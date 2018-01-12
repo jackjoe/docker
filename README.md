@@ -14,3 +14,4 @@ _Dependencies_:
 * soap
 * yarn
 * npm
+* ruby (for gems, for sass)
