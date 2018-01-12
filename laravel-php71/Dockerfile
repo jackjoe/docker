@@ -21,6 +21,7 @@ ENV PHP_EXTENSIONS "bcmath bz2 calendar exif gmp iconv intl json mcrypt pcntl pd
 RUN apk --update --no-cache add \
       zlib-dev \
       libbz2 \
+      libbz2-dev \
       libxml2-dev \
       imap-dev \
       freetype-dev \
@@ -36,7 +37,6 @@ RUN apk --update --no-cache add \
       readline-dev \
       bzip2 \
       bzip2-dev \
-      libbz2 \
       curl-dev \
       libxslt-dev \
       imagemagick-dev \
