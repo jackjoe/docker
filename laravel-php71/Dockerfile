@@ -36,6 +36,7 @@ RUN apk --update --no-cache add \
       readline-dev \
       bzip2 \
       bzip2-dev \
+      libbz2 \
       curl-dev \
       libxslt-dev \
       imagemagick-dev \
