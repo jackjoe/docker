@@ -6,3 +6,12 @@ services:
 
 script:
   - docker build -t jackjoe/laravel-php71:latest ./laravel-php71
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker tag jackjoe/laravel:php71 jackjoe/laravel:php71 ;
+    docker tag jackjoe/laravel:php71 jackjoe/laravel:php71-$TRAVIS_BUILD_NUMBER ;
+    docker push jackjoke/laravel:php71-$TRAVIS_BUILD_NUMBER;
+    docker push jackjoke/laravel:php71;
+    fi

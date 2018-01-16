@@ -5,12 +5,10 @@ LABEL maintainer="Jack + Joe <randy@jackjoe.be>" \
 
 RUN apk add --update --no-cache \
       bash \
-      bison \
       ca-certificates \
       curl \
       file \
       git \
-      grep \
       make \
       openssh-client \
       openssl-dev \
@@ -19,9 +17,7 @@ RUN apk add --update --no-cache \
       build-base \
       autoconf \
       automake \
-      libtool
-
-RUN apk add --update --no-cache \
+      libtool \
       bzip2-dev \
       curl-dev \
       cyrus-sasl-dev \
@@ -47,7 +43,8 @@ RUN apk add --update --no-cache \
       postgresql-dev \
       readline-dev \
       sqlite-dev \
-      zlib-dev
+      zlib-dev \
+      && rm -rf /var/cache/apk/* /tmp/* /usr/share/man
 
 RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure bcmath \
@@ -75,7 +72,8 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-enable imagick \
       && pecl install ast \
       && docker-php-ext-enable ast \
-      && docker-php-source delete
+      && docker-php-source delete \
+      && rm -rf /tmp/* /usr/include/php7 /usr/lib/php7/build /usr/lib/php7/modules/*.a
 
 RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/zz-conf.ini
 
@@ -115,5 +113,11 @@ RUN git clone https://github.com/sass/sassc.git \
       && rm -rf ./libsass ./sassc
 
 # cleanup
-RUN apk del --purge grep build-base .build-deps
-RUN rm -rf /var/cache/apk/* /tmp/* /usr/share/man /usr/include/php7 /usr/lib/php7/build /usr/lib/php7/modules/*.a
+RUN apk del --purge grep build-base .build-deps \
+  && rm -rf \
+  /var/cache/apk/* \
+  /tmp/* \
+  /usr/share/man \
+  /usr/include/php7 \
+  /usr/lib/php7/build \
+  /usr/lib/php7/modules/*.a
