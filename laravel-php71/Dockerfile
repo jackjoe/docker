@@ -57,7 +57,7 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure intl --enable-intl \
       && docker-php-ext-configure pcntl --enable-pcntl \
       && docker-php-ext-configure pdo --enable-pdo \
-      && docker-php-ext-configure pdo_mysql --enable-pdo-mysql\
+      && docker-php-ext-configure pdo_mysql --enable-pdo-mysql \
       && docker-php-ext-configure zip --enable-zip \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
       --enable-gd \
