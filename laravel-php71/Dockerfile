@@ -121,3 +121,5 @@ RUN apk del --purge grep build-base .build-deps \
   /usr/include/php7 \
   /usr/lib/php7/build \
   /usr/lib/php7/modules/*.a
+
+CMD ["php", "--ini"]
