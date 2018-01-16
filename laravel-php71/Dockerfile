@@ -15,11 +15,10 @@ RUN apk add --update --no-cache \
       openssh-client \
       openssl-dev \
       sudo \
-      && apk add --no-cache --virtual \
-      .build-deps \
+      && apk add --no-cache --virtual .build-deps \
       build-base \
-      autotools-dev \
       autoconf \
+      automake \
       libtool
 
 RUN apk add --update --no-cache \
@@ -96,9 +95,9 @@ RUN git clone https://github.com/sass/sassc.git \
       && cd .. \
       && cd libsass \
       && ./configure \
-      &&   --disable-tests \
-      &&   --enable-shared \
-      &&   --prefix=/usr \
+      --disable-tests \
+      --enable-shared \
+      --prefix=/usr \
       && cd .. \
       && make -C libsass -j4 \
       && make -C libsass install \
@@ -107,8 +106,8 @@ RUN git clone https://github.com/sass/sassc.git \
       && cd .. \
       && cd sassc \
       && ./configure \
-      &&   --enable-shared \
-      &&   --prefix=/usr \
+      --enable-shared \
+      --prefix=/usr \
       && cd .. \
       && make -C sassc -j4 \
       && make -C sassc install \
