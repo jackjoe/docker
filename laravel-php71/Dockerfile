@@ -22,11 +22,9 @@ RUN apk add --update --no-cache \
       curl-dev \
       cyrus-sasl-dev \
       freetype-dev \
-      gmp-dev \
       icu-dev \
       imagemagick \
       imagemagick-dev \
-      imap-dev \
       krb5-dev \
       libbz2 \
       libedit-dev \
@@ -47,19 +45,16 @@ RUN apk add --update --no-cache \
       /usr/share/man
 
 RUN docker-php-ext-configure bcmath \
-      && docker-php-ext-configure bcmath --enable-bcmath \
-      && docker-php-ext-configure bz2 \
-      && docker-php-ext-configure calendar --enable-calendar \
-      && docker-php-ext-configure gmp \
-      && docker-php-ext-configure iconv \
-      && docker-php-ext-configure intl --enable-intl \
-      && docker-php-ext-configure json  --enable-json \
-      && docker-php-ext-configure mcrypt --enable-mcyrpt \
-      && docker-php-ext-configure pcntl --enable-pcntl \
-      && docker-php-ext-configure pdo --enable-pdo \
-      && docker-php-ext-configure pdo_mysql --enable-pdo-mysql \
-      && docker-php-ext-configure zip --enable-zip \
+      && docker-php-ext-install calendar \
+      && docker-php-ext-install bcmath \
+      && docker-php-ext-install bz2 \
+      && docker-php-ext-install soap \
+      && docker-php-ext-install intl \
+      && docker-php-ext-install mcrypt \
+      && docker-php-ext-install pdo_mysql \
+      && docker-php-ext-install zip \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+      && docker-php-ext-install gd \
       \
       && set -ex \
       && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS imagemagick-dev libtool \
