@@ -18,8 +18,8 @@ RUN apk add --update --no-cache \
       && apk add --no-cache --virtual \
       .build-deps \
       build-base \
-      autoconf \
       autotools-dev \
+      autoconf \
       libtool
 
 RUN apk add --update --no-cache \
