@@ -48,10 +48,10 @@ RUN apk add --update --no-cache \
 
 RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure bcmath --enable-bcmath \
-      && docker-php-ext-configure bz2 --enable-bz2 \
+      && docker-php-ext-configure bz2 \
       && docker-php-ext-configure calendar --enable-calendar \
-      && docker-php-ext-configure gmp --enable-gmp \
-      && docker-php-ext-configure iconv --enable-iconv \
+      && docker-php-ext-configure gmp \
+      && docker-php-ext-configure iconv \
       && docker-php-ext-configure intl --enable-intl \
       && docker-php-ext-configure json  --enable-json \
       && docker-php-ext-configure mcrypt --enable-mcyrpt \
@@ -118,4 +118,3 @@ RUN apk del --purge grep build-base .build-deps \
   /usr/share/man
 
 CMD ["php", "--ini"]
-CMD ["php", "-i"]
