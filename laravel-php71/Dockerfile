@@ -13,11 +13,6 @@ RUN apk add --update --no-cache \
       openssh-client \
       openssl-dev \
       sudo \
-      && apk add --no-cache --virtual .build-deps \
-      build-base \
-      autoconf \
-      automake \
-      libtool \
       bzip2-dev \
       curl-dev \
       cyrus-sasl-dev \
@@ -40,6 +35,11 @@ RUN apk add --update --no-cache \
       pcre-dev \
       sqlite-dev \
       zlib-dev \
+      && apk add --no-cache --virtual .build-deps \
+      build-base \
+      autoconf \
+      automake \
+      libtool \
       && rm -rf /var/cache/apk/* \
       /tmp/* \
       /usr/share/man
