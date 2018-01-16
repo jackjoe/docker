@@ -3,50 +3,52 @@ FROM php:7.1-alpine
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>" \
   php="7.1"
 
-# OS + tooling
 RUN apk add --update --no-cache \
       bash \
-      make \
+      bison \
+      ca-certificates \
       curl \
+      file \
       git \
       grep \
-      openssl-dev \
+      make \
       openssh-client \
+      openssl-dev \
       sudo \
-      file \
-      bison \
-      ca-certificates
+      && apk add --no-cache --virtual \
+      .build-deps \
+      build-base \
+      autoconf \
+      autotools-dev \
+      libtool
 
-RUN apk add --no-cache --virtual .build-deps build-base autoconf
-
-# php
 RUN apk add --update --no-cache \
-      zlib-dev \
-      libbz2 \
-      libxml2-dev \
-      imap-dev \
-      freetype-dev \
-      libjpeg-turbo-dev \
-      libltdl \
-      libtool \
-      libmcrypt-dev \
-      libmcrypt \
-      libedit-dev \
-      libpng-dev \
-      krb5-dev \
-      icu-dev \
-      readline-dev \
       bzip2-dev \
       curl-dev \
-      libxslt-dev \
-      imagemagick-dev \
-      imagemagick \
+      cyrus-sasl-dev \
+      freetype-dev \
       gmp-dev \
-      postgresql-dev \
+      icu-dev \
+      imagemagick \
+      imagemagick-dev \
+      imap-dev \
+      krb5-dev \
+      libbz2 \
+      libedit-dev \
       libintl \
+      libjpeg-turbo-dev \
+      libltdl \
+      libmcrypt \
+      libmcrypt-dev \
+      libpng-dev \
+      libtool \
+      libxml2-dev \
+      libxslt-dev \
       pcre-dev \
+      postgresql-dev \
+      readline-dev \
       sqlite-dev \
-      cyrus-sasl-dev
+      zlib-dev
 
 RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure bcmath \
@@ -68,29 +70,50 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure xsl \
       && docker-php-ext-configure zip \
       && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-      && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-
-RUN pecl install imagick \
+      && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+      \
+      && pecl install imagick \
       && docker-php-ext-enable imagick
-
-RUN pecl install ast \
-      && docker-php-ext-enable ast
+      && pecl install ast \
+      && docker-php-ext-enable ast \
+      && docker-php-source delete
 
 RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/zz-conf.ini
 
-RUN cd /
-RUN docker-php-source delete
+# composer + hirak/prestissimo to speedup composer installs
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+      && composer global require hirak/prestissimo --prefer-dist --no-interaction \
+      && rm -rf $HOME/.composer/cache/*
 
-# composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-# Install hirak/prestissimo to speedup composer installs.
-RUN composer global require hirak/prestissimo --prefer-dist --no-interaction
-RUN rm -rf $HOME/.composer/cache/*
-
-# yarn/npm
 RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' > /etc/apk/repositories \
       && apk add --update nodejs nodejs-npm yarn
-RUN npm install -g npm
+      && npm install -g npm
+
+RUN git clone https://github.com/sass/sassc.git \
+      && git clone https://github.com/sass/libsass.git \
+      && cd libsass \
+      && autoreconf --force --install \
+      && cd .. \
+      && cd libsass \
+      && ./configure \
+      &&   --disable-tests \
+      &&   --enable-shared \
+      &&   --prefix=/usr \
+      && cd .. \
+      && make -C libsass -j4 \
+      && make -C libsass install \
+      && cd sassc \
+      && autoreconf --force --install \
+      && cd .. \
+      && cd sassc \
+      && ./configure \
+      &&   --enable-shared \
+      &&   --prefix=/usr \
+      && cd .. \
+      && make -C sassc -j4 \
+      && make -C sassc install \
+      && sassc --version
+      && rm -rf ./libsass ./sassc
 
 # cleanup
 RUN apk del --purge grep build-base .build-deps
