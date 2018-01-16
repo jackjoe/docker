@@ -72,8 +72,7 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-enable imagick \
       && pecl install ast \
       && docker-php-ext-enable ast \
-      && docker-php-source delete \
-      && rm -rf /tmp/* /usr/include/php7 /usr/lib/php7/build /usr/lib/php7/modules/*.a
+      && docker-php-source delete
 
 RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/zz-conf.ini
 
@@ -117,9 +116,6 @@ RUN apk del --purge grep build-base .build-deps \
   && rm -rf \
   /var/cache/apk/* \
   /tmp/* \
-  /usr/share/man \
-  /usr/include/php7 \
-  /usr/lib/php7/build \
-  /usr/lib/php7/modules/*.a
+  /usr/share/man
 
 CMD ["php", "--ini"]
