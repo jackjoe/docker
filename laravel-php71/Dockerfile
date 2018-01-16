@@ -44,6 +44,7 @@ RUN apk add --update --no-cache \
       /tmp/* \
       /usr/share/man
 
+# do we need gd?
 RUN docker-php-ext-configure bcmath \
       && docker-php-ext-install calendar \
       && docker-php-ext-install bcmath \
