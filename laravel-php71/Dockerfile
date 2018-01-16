@@ -112,7 +112,7 @@ RUN git clone https://github.com/sass/sassc.git \
       && cd .. \
       && make -C sassc -j4 \
       && make -C sassc install \
-      && sassc --version
+      && sassc --version \
       && rm -rf ./libsass ./sassc
 
 # cleanup
