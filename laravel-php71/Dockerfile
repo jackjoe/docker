@@ -73,7 +73,7 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
       \
       && pecl install imagick \
-      && docker-php-ext-enable imagick
+      && docker-php-ext-enable imagick \
       && pecl install ast \
       && docker-php-ext-enable ast \
       && docker-php-source delete
@@ -86,7 +86,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
       && rm -rf $HOME/.composer/cache/*
 
 RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' > /etc/apk/repositories \
-      && apk add --update nodejs nodejs-npm yarn
+      && apk add --update nodejs nodejs-npm yarn \
       && npm install -g npm
 
 RUN git clone https://github.com/sass/sassc.git \
