@@ -40,8 +40,6 @@ RUN apk add --update --no-cache \
       libxml2-dev \
       libxslt-dev \
       pcre-dev \
-      postgresql-dev \
-      readline-dev \
       sqlite-dev \
       zlib-dev \
       && rm -rf /var/cache/apk/* \
@@ -49,26 +47,20 @@ RUN apk add --update --no-cache \
       /usr/share/man
 
 RUN docker-php-ext-configure bcmath \
-      && docker-php-ext-configure bcmath \
-      && docker-php-ext-configure bz2 \
-      && docker-php-ext-configure calendar \
-      && docker-php-ext-configure json \
-      && docker-php-ext-configure mcrypt \
-      && docker-php-ext-configure gmp \
-      && docker-php-ext-configure iconv \
-      && docker-php-ext-configure intl \
-      && docker-php-ext-configure pcntl \
-      && docker-php-ext-configure pdo \
-      && docker-php-ext-configure pdo_mysql \
-      && docker-php-ext-configure readline \
-      && docker-php-ext-configure soap \
-      && docker-php-ext-configure exif \
-      && docker-php-ext-configure xml \
-      && docker-php-ext-configure xmlrpc \
-      && docker-php-ext-configure xsl \
-      && docker-php-ext-configure zip \
-      && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+      && docker-php-ext-configure bcmath --enable-bcmath \
+      && docker-php-ext-configure bz2 --enable-bz2 \
+      && docker-php-ext-configure calendar --enable-calendar \
+      && docker-php-ext-configure json  --enable-json \
+      && docker-php-ext-configure mcrypt --enable-mcyrpt \
+      && docker-php-ext-configure gmp --enable-gmp \
+      && docker-php-ext-configure iconv --enable-iconv \
+      && docker-php-ext-configure intl --enable-intl \
+      && docker-php-ext-configure pcntl --enable-pcntl \
+      && docker-php-ext-configure pdo --enable-pdo \
+      && docker-php-ext-configure pdo_mysql --enable-pdo-mysql\
+      && docker-php-ext-configure zip --enable-zip \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+      --enable-gd \
       \
       && set -ex \
       && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS imagemagick-dev libtool \
@@ -127,3 +119,4 @@ RUN apk del --purge grep build-base .build-deps \
   /usr/share/man
 
 CMD ["php", "--ini"]
+CMD ["php", "-i"]
