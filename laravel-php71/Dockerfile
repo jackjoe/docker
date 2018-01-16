@@ -44,7 +44,9 @@ RUN apk add --update --no-cache \
       readline-dev \
       sqlite-dev \
       zlib-dev \
-      && rm -rf /var/cache/apk/* /tmp/* /usr/share/man
+      && rm -rf /var/cache/apk/* \
+      /tmp/* \
+      /usr/share/man
 
 RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure bcmath \
@@ -68,8 +70,14 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
       \
-      && pecl install imagick \
+      && set -ex \
+      && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS imagemagick-dev libtool \
+      && export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
+      && pecl install imagick-3.4.3 \
       && docker-php-ext-enable imagick \
+      && apk add --no-cache --virtual .imagick-runtime-deps imagemagick \
+      && apk del .phpize-deps \
+      \
       && pecl install ast \
       && docker-php-ext-enable ast \
       && docker-php-source delete
