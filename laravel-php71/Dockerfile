@@ -37,9 +37,6 @@ RUN apk add --update --no-cache \
       zlib-dev \
       && apk add --no-cache --virtual .build-deps \
       build-base \
-      autoconf \
-      automake \
-      libtool \
       && rm -rf /var/cache/apk/* \
       /tmp/* \
       /usr/share/man
