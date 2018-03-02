@@ -29,7 +29,6 @@ RUN apk add --update --no-cache \
       libmcrypt \
       libmcrypt-dev \
       libpng-dev \
-      libtool \
       libxml2-dev \
       libxslt-dev \
       pcre-dev \
@@ -37,6 +36,8 @@ RUN apk add --update --no-cache \
       zlib-dev \
       && apk add --no-cache --virtual .build-deps \
       build-base \
+      autoconf \
+      libtool \
       && rm -rf /var/cache/apk/* \
       /tmp/* \
       /usr/share/man
