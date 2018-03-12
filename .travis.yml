@@ -5,8 +5,8 @@ services:
   - docker
 
 script:
-  - docker build -t jackjoe/laravel-php71:latest ./laravel-php71
-  - docker build -t jackjoe/laravel-php72:latest ./laravel-php72
+  - docker build -t jackjoe/laravel:php71:latest ./laravel-php71
+  - docker build -t jackjoe/laravel:php72:latest ./laravel-php72
   - docker build -t jackjoe/ci-deploy-alpine:latest ./ci-deploy-alpine
 
 after_success:
