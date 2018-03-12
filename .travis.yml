@@ -22,6 +22,6 @@ after_success:
     docker push jackjoke/laravel:php72;
     docker tag jackjoe/ci-deploy:alpine jackjoe/ci-deploy:alpine ;
     docker tag jackjoe/ci-deploy:alpine jackjoe/ci-deploy:alpine-$TRAVIS_BUILD_NUMBER ;
-    docker push jackjoke/ci-deploy:alpine-$TRAVIS_BUILD_NUMBER;
-    docker push jackjoke/ci-deploy:alpine;
+    docker push jackjoe/ci-deploy:alpine-$TRAVIS_BUILD_NUMBER;
+    docker push jackjoe/ci-deploy:alpine;
     fi
