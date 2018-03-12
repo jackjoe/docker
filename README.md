@@ -30,7 +30,7 @@ PHP 7.2
 
 ### Gitlab CI Alpine
 
-Vanilla Alpine, with a sent of openssh.
+Vanilla Alpine, with openssh.
 
 _OS_: Alpine Linux
 
