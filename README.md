@@ -18,7 +18,7 @@ _Dependencies_:
 * npm
 * imagick
 
-### Flavours
+#### Flavours
 
 PHP 7.1
 
@@ -27,3 +27,13 @@ PHP 7.1
 PHP 7.2
 
 `docker build -t jackjoe/laravel:php72 ./laravel-php72`
+
+### Gitlab CI Alpine
+
+Vanilla Alpine, with a sent of openssh.
+
+_OS_: Alpine Linux
+
+_Dependencies_:
+
+* openssh
