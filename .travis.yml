@@ -14,14 +14,14 @@ after_success:
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker tag jackjoe/laravel:php71 jackjoe/laravel:php71;
     docker tag jackjoe/laravel:php71 jackjoe/laravel:php71-$TRAVIS_BUILD_NUMBER;
-    docker push jackjoe/laravel:php71-$TRAVIS_BUILD_NUMBER;
+    # docker push jackjoe/laravel:php71-$TRAVIS_BUILD_NUMBER;
     docker push jackjoe/laravel:php71;
     docker tag jackjoe/laravel:php72 jackjoe/laravel:php72;
     docker tag jackjoe/laravel:php72 jackjoe/laravel:php72-$TRAVIS_BUILD_NUMBER;
-    docker push jackjoe/laravel:php72-$TRAVIS_BUILD_NUMBER;
+    # docker push jackjoe/laravel:php72-$TRAVIS_BUILD_NUMBER;
     docker push jackjoe/laravel:php72;
     docker tag jackjoe/ci-deploy-alpine jackjoe/ci-deploy-alpine;
     docker tag jackjoe/ci-deploy-alpine jackjoe/ci-deploy-alpine-$TRAVIS_BUILD_NUMBER;
-    docker push jackjoe/ci-deploy-alpine-$TRAVIS_BUILD_NUMBER;
+    # docker push jackjoe/ci-deploy-alpine-$TRAVIS_BUILD_NUMBER;
     docker push jackjoe/ci-deploy-alpine;
     fi
