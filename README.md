@@ -41,3 +41,9 @@ _Dependencies_:
 * bash
 
 `docker build -t jackjoe/ci-deploy-alpine ./ci-deploy-alpine`
+
+### Elixir + Phoenix
+
+Container to build Phoenix apps
+
+`docker build -t jackjoe/elixir-phx ./elixir-phx`
