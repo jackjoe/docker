@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/jackjoe/docker.svg?branch=master)](https://travis-ci.org/jackjoe/docker)
 
-# docker
+# Docker
 
 A collection of docker images we use.
 
@@ -30,7 +30,7 @@ PHP 7.2
 
 ### Gitlab CI Alpine
 
-Vanilla Alpine, with a sent of openssh.
+Vanilla Alpine, with a sent of openssh, zip, rsync and git.
 
 _OS_: Alpine Linux
 
@@ -39,6 +39,9 @@ _Dependencies_:
 * openssh
 * make
 * bash
+* rsync
+* zip
+* git
 
 `docker build -t jackjoe/ci-deploy-alpine ./ci-deploy-alpine`
 
