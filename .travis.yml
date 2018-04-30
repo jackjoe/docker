@@ -8,7 +8,7 @@ script:
   - docker build -t jackjoe/laravel-php71 ./laravel-php71
   - docker build -t jackjoe/laravel-php72 ./laravel-php72
   - docker build -t jackjoe/ci-deploy-alpine ./ci-deploy-alpine
-  - docker build -t jackjoe/elixir-phx ./ci-elixir-phx
+  - docker build -t jackjoe/elixir-phx ./elixir-phx
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
