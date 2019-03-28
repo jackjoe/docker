@@ -5,7 +5,7 @@ FROM bitwalker/alpine-elixir:1.8.1
 RUN \
     apk update && \
     apk --no-cache --update add \
-    bash openssh-client build-base git ncurses yarn \
+    curl bash openssh-client build-base git ncurses yarn \
 
 RUN curl -sL https://sentry.io/get-cli/ | bash
 
