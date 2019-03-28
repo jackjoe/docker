@@ -1,11 +1,13 @@
-FROM elixir:1.8
+FROM bitwalker/alpine-elixir:1.8.1
 
 # https://pkgs.alpinelinux.org/package/edge/main/ppc64le/build-base
 
 RUN \
     apk update && \
     apk --no-cache --update add \
-        bash openssh-client build-base git ncurses yarn
+    bash openssh-client build-base git ncurses yarn \
+    curl -sL https://sentry.io/get-cli/ | bash
 
-RUN mix local.hex --force && \
-    mix local.rebar --force
+WORKDIR ${HOME}
+
+CMD ["/bin/sh"]
