@@ -6,7 +6,8 @@ RUN \
     apk update && \
     apk --no-cache --update add \
     bash openssh-client build-base git ncurses yarn \
-    curl -sL https://sentry.io/get-cli/ | bash
+
+RUN curl -sL https://sentry.io/get-cli/ | bash
 
 WORKDIR ${HOME}
 
