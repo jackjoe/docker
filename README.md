@@ -10,13 +10,13 @@ Base image that has all dependencies needed for our Laravel projects. Contains o
 
 _OS_: Alpine Linux
 
-_Dependencies_:
+_Packages_:
 
-* mcrypt
-* soap
-* yarn
-* npm
-* imagick
+- mcrypt
+- soap
+- yarn
+- npm
+- imagick
 
 #### Flavours
 
@@ -30,23 +30,31 @@ PHP 7.2
 
 ### Gitlab CI Alpine
 
-Vanilla Alpine, with a sent of openssh, zip, rsync and git.
+Vanilla Alpine, with some `bash`.
 
 _OS_: Alpine Linux
 
-_Dependencies_:
+_Packages_:
 
-* openssh
-* make
-* bash
-* rsync
-* zip
-* git
+- bash
 
-`docker build -t jackjoe/ci-deploy-alpine ./ci-deploy-alpine`
+`docker build -t jackjoe/alpine ./alpine`
 
 ### Elixir + Phoenix
 
-Container to build Phoenix apps
+Container to build Phoenix apps, based on Bitwalkers image.
+
+_OS_: Alpine Linux
+
+_Packages_:
+
+- openssh-client
+- build-base
+- git
+- ncurses
+- yarn
+- openssl-dev
+- bash
+- curl
 
 `docker build -t jackjoe/elixir-phx ./elixir-phx`
