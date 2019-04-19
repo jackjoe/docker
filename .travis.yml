@@ -6,6 +6,7 @@ services:
 
 script:
   - docker build -t jackjoe/elixir-phx ./elixir-phx
+  - docker build -t jackjoe/alpine ./alpine
   # - docker build -t jackjoe/laravel-php71 ./laravel-php71
   # - docker build -t jackjoe/laravel-php72 ./laravel-php72
   # - docker build -t jackjoe/ci-deploy-alpine ./ci-deploy-alpine
@@ -16,6 +17,9 @@ after_success:
     docker tag jackjoe/elixir-phx jackjoe/elixir-phx;
     docker tag jackjoe/elixir-phx jackjoe/elixir-phx-$TRAVIS_BUILD_NUMBER;
     docker push jackjoe/elixir-phx;
+    docker tag jackjoe/alpine jackjoe/alpine;
+    docker tag jackjoe/alpine jackjoe/alpine-$TRAVIS_BUILD_NUMBER;
+    docker push jackjoe/alpine;
     fi
   # - if [ "$TRAVIS_BRANCH" == "master" ]; then
   #   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
