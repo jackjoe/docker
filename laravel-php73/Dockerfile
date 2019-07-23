@@ -24,6 +24,7 @@ RUN apk add --update --no-cache \
       libbz2 \
       libedit-dev \
       libintl \
+      libzip \
       libjpeg-turbo-dev \
       libltdl \
       libpng-dev \
