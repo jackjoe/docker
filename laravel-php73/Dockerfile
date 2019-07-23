@@ -34,6 +34,7 @@ RUN apk add --update --no-cache \
       pcre-dev \
       sqlite-dev \
       zlib-dev \
+      libzip-dev \
       && apk add --no-cache --virtual .build-deps \
       build-base \
       autoconf \
@@ -44,13 +45,14 @@ RUN apk add --update --no-cache \
       /usr/share/man
 
 # do we need gd?
-RUN docker-php-ext-configure bcmath \
-      && docker-php-ext-install calendar \
+RUN docker-php-ext-install calendar \
+      && docker-php-ext-configure bcmath \
       && docker-php-ext-install bcmath \
       && docker-php-ext-install bz2 \
       && docker-php-ext-install soap \
       && docker-php-ext-install intl \
       && docker-php-ext-install pdo_mysql \
+      && docker-php-ext-configure zip --with-libzip \
       && docker-php-ext-install zip \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
       && docker-php-ext-install gd \
