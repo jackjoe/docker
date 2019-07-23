@@ -28,6 +28,10 @@ PHP 7.2
 
 `docker build -t jackjoe/laravel-php72 ./laravel-php72`
 
+PHP 7.3
+
+`docker build -t jackjoe/laravel-php73 ./laravel-php73`
+
 ### Gitlab CI Alpine
 
 Vanilla Alpine, with some `bash`.
