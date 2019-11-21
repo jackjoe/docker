@@ -157,7 +157,7 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY info.php /var/www/html/public/info.php
 
 RUN rm -rf /var/cache/apk/* && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 80
 
