@@ -62,3 +62,15 @@ _Packages_:
 - curl
 
 `docker build -t jackjoe/elixir-phx ./elixir-phx`
+
+### FPM + nginx
+
+Container with nginx and fpm in one container.
+
+_OS_: Alpine Linux
+
+_Packages_:
+
+- ...
+
+`docker build -t jackjoe/fpm-nginx ./fpm-nginx
