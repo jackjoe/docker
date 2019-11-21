@@ -125,8 +125,14 @@ COPY install_composer.php /var/www/html/install_composer.php
 RUN apk update && apk add \
         # needed for gd
         libpng-dev libjpeg-turbo-dev \
-    # Installing composer
-    && php /var/www/html/install_composer.php \
+        # needed for gd
+        libzip libzip-dev \
+        freetype-dev \
+        icu-dev \
+        bzip2-dev libbz2
+
+# Installing composer
+RUN php /var/www/html/install_composer.php \
     # Installing common Laravel dependencies
     && docker-php-ext-configure zip --with-libzip \
     && docker-php-ext-install zip \
