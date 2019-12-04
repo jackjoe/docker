@@ -111,7 +111,7 @@ _Packages_:
 - openssl-dev
 - bash
 - curl
-- libpng-dev 
+- libpng-dev
 - libjpeg-turbo-dev
 
 _PHP Packages_:
@@ -127,4 +127,8 @@ _PHP Packages_:
 - bz2
 - calendar
 
-`docker build -t jackjoe/fpm-nginx ./fpm-nginx
+`docker build -t jackjoe/fpm-nginx ./fpm-nginx`
+
+## Docker
+
+Our own Docker, to use as base builder in Gitlab. Extends from the base docker image with make, bash and git.
