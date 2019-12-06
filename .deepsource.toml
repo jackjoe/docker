@@ -1,0 +1,20 @@
+version = 1
+
+[[analyzers]]
+name = "docker"
+enabled = true
+
+  [analyzers.meta]
+  dockerfile_paths = [
+    "alpine/Dockerfile",
+    "ci-deploy-alpine/Dockerfile",
+    "elixir-phx/Dockerfile",
+    "fpm-nginx/Dockerfile",
+    "laravel-php71/Dockerfile",
+    "laravel-php72/Dockerfile",
+    "laravel-php73/Dockerfile"
+  ]
+
+  trusted_registries = [
+    "docker.io"
+  ]
