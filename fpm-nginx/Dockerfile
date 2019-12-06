@@ -153,8 +153,8 @@ RUN php /var/www/html/install_composer.php \
 
 # Adding the opcache configuration into the wrong directory intentionally.
 # This is enabled at runtime
-ADD opcache.ini /usr/local/etc/php/opcache_disabled.ini
-ADD healthcheck.ini /usr/local/etc/php/healthcheck.ini
+COPY opcache.ini /usr/local/etc/php/opcache_disabled.ini
+COPY healthcheck.ini /usr/local/etc/php/healthcheck.ini
 
 COPY services.d /etc/services.d
 

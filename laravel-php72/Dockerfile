@@ -3,7 +3,7 @@ FROM php:7.2-alpine
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>" \
   php="7.2"
 
-RUN apk add --update --no-cache \
+RUN apk add --no-cache \
       bash \
       ca-certificates \
       curl \
@@ -38,8 +38,7 @@ RUN apk add --update --no-cache \
       autoconf \
       automake \
       libtool \
-      && rm -rf /var/cache/apk/* \
-      /tmp/* \
+      && rm -rf /tmp/* \
       /usr/share/man
 
 # do we need gd?
@@ -74,34 +73,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
       && rm -rf $HOME/.composer/cache/*
 
 RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' > /etc/apk/repositories \
-      && apk add --update nodejs nodejs-npm yarn \
+      && apk add --no-cache nodejs nodejs-npm yarn \
       && npm install -g npm
-
-# RUN git clone https://github.com/sass/sassc.git \
-#       && git clone https://github.com/sass/libsass.git \
-#       && cd libsass \
-#       && autoreconf --force --install \
-#       && cd .. \
-#       && cd libsass \
-#       && ./configure \
-#       --disable-tests \
-#       --enable-shared \
-#       --prefix=/usr \
-#       && cd .. \
-#       && make -C libsass -j4 \
-#       && make -C libsass install \
-#       && cd sassc \
-#       && autoreconf --force --install \
-#       && cd .. \
-#       && cd sassc \
-#       && ./configure \
-#       --enable-shared \
-#       --prefix=/usr \
-#       && cd .. \
-#       && make -C sassc -j4 \
-#       && make -C sassc install \
-#       && sassc --version \
-#       && rm -rf ./libsass ./sassc
 
 # cleanup
 RUN apk del --purge grep build-base .build-deps \

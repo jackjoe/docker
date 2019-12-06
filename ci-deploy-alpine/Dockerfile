@@ -1,15 +1,15 @@
-FROM jackjoe/alpine
+FROM jackjoe/alpine:latest
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
 
-RUN apk add --update \
+RUN apk --no-cache add \
       openssh \
       make \
       bash \
       zip \
       rsync \
       git \
-      && rm  -rf /tmp/* /var/cache/apk/*
+      && rm -rf /tmp/*
 
 EXPOSE 22
 
