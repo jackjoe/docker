@@ -80,8 +80,8 @@ RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpin
       && npm install -g npm
 
 # cleanup
-RUN apk del --purge grep build-base .build-deps \
-  && rm -rf \
+RUN apk del --purge build-base .build-deps
+RUN rm -rf \
   /var/cache/apk/* \
   /tmp/* \
   /usr/share/man

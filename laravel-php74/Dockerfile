@@ -36,7 +36,7 @@ RUN apk add --no-cache \
       zlib-dev \
       libzip-dev \
       && apk add --no-cache --virtual .build-deps \
-      build-base \
+      build-base  \
       autoconf \
       automake \
       libtool \
@@ -52,7 +52,7 @@ RUN docker-php-ext-install calendar \
       && docker-php-ext-install intl \
       && docker-php-ext-install pdo_mysql \
       && docker-php-ext-install zip \
-      && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+      && docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ \
       && docker-php-ext-install gd \
       \
       && set -ex \
@@ -79,8 +79,8 @@ RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpin
       && npm install -g npm
 
 # cleanup
-RUN apk del --purge grep build-base .build-deps \
-  && rm -rf \
+RUN apk del --purge build-base .build-deps \
+RUN rm -rf \
   /var/cache/apk/* \
   /tmp/* \
   /usr/share/man

@@ -33,6 +33,10 @@ _Packages_:
 
 `docker build -t jackjoe/laravel-php73 ./laravel-php73`
 
+### PHP 7.4
+
+`docker build -t jackjoe/laravel-php74 ./laravel-php74`
+
 ## Alpine
 
 Vanilla Alpine, with some `bash`.
