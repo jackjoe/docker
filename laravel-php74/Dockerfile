@@ -51,7 +51,6 @@ RUN docker-php-ext-install calendar \
       && docker-php-ext-install soap \
       && docker-php-ext-install intl \
       && docker-php-ext-install pdo_mysql \
-      && docker-php-ext-configure zip --with-libzip \
       && docker-php-ext-install zip \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
       && docker-php-ext-install gd \
