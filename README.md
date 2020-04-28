@@ -48,6 +48,7 @@ _OS_: Alpine Linux
 _Packages_:
 
 - curl
+- bash
 
 `docker build -t jackjoe/alpine ./alpine`
 
@@ -75,7 +76,7 @@ _Packages_:
 
 Container to build Phoenix apps, based on Bitwalkers image.
 
-_Based on_: `bitwalker/alpine-elixir:1.9.4`
+_Based on_: `bitwalker/alpine-elixir:1.10.2`
 
 _OS_: Alpine Linux
 
