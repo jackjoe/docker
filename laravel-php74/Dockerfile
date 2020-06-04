@@ -29,6 +29,7 @@ RUN apk add --no-cache \
       libltdl \
       libpng-dev \
       libtool \
+      libstdc++ \
       libxml2-dev \
       libxslt-dev \
       pcre-dev \
@@ -75,9 +76,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
       && composer global require hirak/prestissimo --prefer-dist --no-interaction \
       && rm -rf $HOME/.composer/cache/*
 
-RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' > /etc/apk/repositories \
-      && apk add --no-cache nodejs nodejs-npm yarn \
-      && npm install -g npm
+RUN apk add --no-cache libuv \
+    && apk add --no-cache nodejs-current \
+    && apk add --no-cache yarn nodejs-npm
 
 # cleanup
 RUN apk del --purge build-base .build-deps \
