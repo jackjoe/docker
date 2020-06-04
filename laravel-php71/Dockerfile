@@ -49,6 +49,7 @@ RUN docker-php-ext-configure bcmath \
       && docker-php-ext-install soap \
       && docker-php-ext-install intl \
       && docker-php-ext-install mcrypt \
+      && docker-php-ext-install sockets \
       && docker-php-ext-install pdo_mysql \
       && docker-php-ext-install zip \
       && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
