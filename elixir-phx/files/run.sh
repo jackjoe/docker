@@ -84,7 +84,7 @@ EOF
 	echo 'MySQL init process done. Ready for start up.'
 	echo
 
-	echo "exec /usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0" "$@"
+	# echo "exec /usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0" # "$@"
 fi
 
 # execute any pre-exec scripts
@@ -96,4 +96,6 @@ do
 	fi
 done
 
-# exec /usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0 $@
+# rc-service mariadb restart
+/usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0 &
+echo "Started mysqld"
