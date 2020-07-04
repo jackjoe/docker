@@ -9,8 +9,7 @@ do
 	fi
 done
 
-if [ -d "/run/mysqld" ]; then
-	echo "[i] mysqld already present, skipping creation"
+if [ -d "/run/mysqld" ]; then echo "[i] mysqld already present, skipping creation"
 	chown -R mysql:mysql /run/mysqld
 else
 	echo "[i] mysqld not found, creating...."
@@ -99,3 +98,5 @@ done
 # rc-service mariadb restart
 /usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0 &
 echo "Started mysqld"
+
+/bin/sh
