@@ -9,6 +9,7 @@ enabled = true
     "alpine/Dockerfile",
     "ci-deploy-alpine/Dockerfile",
     "elixir-phx/Dockerfile",
+    "elixir-phx-mysql/Dockerfile",
     "fpm-nginx/Dockerfile",
     "laravel-php71/Dockerfile",
     "laravel-php72/Dockerfile",

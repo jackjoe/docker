@@ -17,6 +17,9 @@ after_success:
     docker tag jackjoe/elixir-phx jackjoe/elixir-phx;
     docker tag jackjoe/elixir-phx jackjoe/elixir-phx-$TRAVIS_BUILD_NUMBER;
     docker push jackjoe/elixir-phx;
+    docker tag jackjoe/elixir-phx-mysql jackjoe/elixir-mysql-phx;
+    docker tag jackjoe/elixir-phx-mysql jackjoe/elixir-mysql-phx-$TRAVIS_BUILD_NUMBER;
+    docker push jackjoe/elixir-phx-mysql;
     docker tag jackjoe/alpine jackjoe/alpine;
     docker tag jackjoe/alpine jackjoe/alpine-$TRAVIS_BUILD_NUMBER;
     docker push jackjoe/alpine;
