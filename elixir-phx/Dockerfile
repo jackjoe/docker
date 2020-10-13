@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir:1.10.2
+FROM bitwalker/alpine-elixir:1.10.4
 
 RUN \
     apk update && \
