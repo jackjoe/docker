@@ -76,7 +76,7 @@ _Packages_:
 
 Container to build Phoenix apps, based on Bitwalkers image.
 
-_Based on_: `bitwalker/alpine-elixir:1.10.2`
+_Based on_: `bitwalker/alpine-elixir:1.11.0`
 
 _OS_: Alpine Linux
 

@@ -1,4 +1,4 @@
-FROM php:7.4-alpine3.12
+FROM php:7.4-alpine3.13
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>" \
   php="7.4"
