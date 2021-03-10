@@ -27,7 +27,3 @@ VOLUME ["/var/lib/mysql"]
 WORKDIR ${HOME}
 
 ENTRYPOINT ["/scripts/run.sh"]
-
-# mariadb stop
-
-# CMD ["/bin/sh"]
