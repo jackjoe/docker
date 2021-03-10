@@ -71,9 +71,8 @@ RUN docker-php-ext-install calendar \
 
 RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/zz-conf.ini
 
-# composer + hirak/prestissimo to speedup composer installs
+# composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --2 --filename=composer \
-      && composer global require hirak/prestissimo --prefer-dist --no-interaction \
       && rm -rf $HOME/.composer/cache/*
 
 RUN apk add --no-cache libuv \
