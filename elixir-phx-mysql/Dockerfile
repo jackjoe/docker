@@ -1,9 +1,8 @@
 FROM bitwalker/alpine-elixir:1.12.0
 
-RUN \
-    apk update && \
+RUN apk update && \
     apk --no-cache add \
-    curl bash openssh-client build-base make git ncurses yarn openssl-dev libstdc++ \
+    curl bash openssh-client build-base make git ncurses yarn openssl-dev nmap libstdc++ libgcc ncurses-libs \
     && rm -rf /tmp/*
 
 RUN curl -sL https://sentry.io/get-cli/ | bash && sentry-cli -V
