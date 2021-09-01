@@ -1,7 +1,7 @@
-FROM alpine:3.14.0
+FROM alpine:3.14
 
 RUN apk update && \
-    apk --no-cache add bash curl libstdc++ libc-dev libgcc ncurses-libs \
+    apk --no-cache add openssl bash curl libstdc++ libc-dev libgcc ncurses-libs \
     && rm -rf /tmp/*
 
 CMD ["/bin/sh"]
