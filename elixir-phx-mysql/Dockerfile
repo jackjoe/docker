@@ -1,5 +1,7 @@
 FROM bitwalker/alpine-elixir:1.12.0
 
+LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
+
 RUN apk update && \
     apk --no-cache add \
     curl bash openssh-client build-base make git ncurses yarn openssl-dev nmap libstdc++ libgcc ncurses-libs \
