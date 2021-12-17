@@ -1,14 +1,22 @@
-FROM bitwalker/alpine-elixir:1.12.0
+FROM elixir:1.13-alpine
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
 
-RUN apk update && \
-    apk --no-cache add \
-    curl bash openssh-client build-base make git ncurses yarn openssl-dev nmap libstdc++ libgcc ncurses-libs \
-    && rm -rf /tmp/*
+ENV MIX_HOME=/opt/mix \
+    HEX_HOME=/opt/hex
+
+RUN apk --no-cache --update upgrade && \
+    apk add --no-cache --update --virtual .elixir-build \
+    make && \
+    apk add --no-cache --update \
+    curl bash openssh-client build-base coreutils \
+    git ncurses yarn openssl-dev nmap libstdc++ libc-dev libgcc ncurses-libs && \
+    mix local.hex --force && \
+    mix local.rebar --force && \
+    rm -rf /tmp/*
 
 RUN curl -sL https://sentry.io/get-cli/ | bash && sentry-cli -V
 
-WORKDIR ${HOME}
+WORKDIR /opt/app
 
 CMD ["/bin/sh"]
