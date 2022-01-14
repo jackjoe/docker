@@ -1,0 +1,8 @@
+FROM jackjoe/alpine
+
+LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
+
+RUN apk add --no-cache mysql-client mariadb-connector-c
+RUN rm -rf /tmp/*
+
+CMD ["/bin/sh"]
