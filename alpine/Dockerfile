@@ -1,9 +1,9 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
 
 RUN apk update && \
-    apk --no-cache add openssl bash curl libstdc++ libc-dev libgcc ncurses-libs \
-    && rm -rf /tmp/*
+    apk --no-cache add openssl bash curl libstdc++ libc-dev libgcc ncurses-libs
+RUN rm -rf /tmp/*
 
 CMD ["/bin/sh"]

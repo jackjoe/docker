@@ -1,4 +1,4 @@
-FROM jackjoe/alpine
+FROM jackjoe/alpine:latest
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
 

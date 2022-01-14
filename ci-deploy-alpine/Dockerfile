@@ -2,8 +2,8 @@ FROM jackjoe/alpine:latest
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
 
-RUN apk --no-cache add openssh make zip rsync git \
-    && rm -rf /tmp/*
+RUN apk --no-cache add openssh make zip rsync git
+RUN rm -rf /tmp/*
 
 EXPOSE 22
 
