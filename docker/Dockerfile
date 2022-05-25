@@ -1,4 +1,4 @@
-FROM docker:19.03.8
+FROM docker:20.10.16
 
 LABEL maintainer="Jack + Joe <randy@jackjoe.be>"
 
